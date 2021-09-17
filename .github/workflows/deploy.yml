@@ -61,13 +61,13 @@ jobs:
           && npm run gen:type:prod
           
       - name: Generate Types (user-profile)
-        if: github.head_ref == 'feature/user-profile-test'
+        if: github.base_ref == 'user-profile-test'
         run: |
           npm run gen:clean \
           && npm run gen:type:prod
           
       - name: Output the branch name
-        run: echo $(echo $GITHUB_REF | cut -d'/' -f 3)
+        run: echo $(echo $GITHUB_REF)
         
       - name: Lint
         run: |
