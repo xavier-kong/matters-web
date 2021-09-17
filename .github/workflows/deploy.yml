@@ -177,6 +177,22 @@ jobs:
           deployment_package: deploy.zip
           use_existing_version_if_available: true
           wait_for_deployment: true
+          
+      # === `feature/user-profile` branch ===
+      - name: Deploy to EB (production)
+        if: github.ref == 'refs/heads/feature/user-profile-test'
+        uses: einaregilsson/beanstalk-deploy@v18
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: matters-prod
+          environment_name: matters-client-web-prod-new
+          version_label: matters-web-prod-new-${{ hashFiles('deploy.zip') }}
+          version_description: ${{ github.SHA }}
+          region: ap-southeast-1
+          deployment_package: deploy.zip
+          use_existing_version_if_available: true
+          wait_for_deployment: true
 
       - name: Slack Notification
         if: always()
