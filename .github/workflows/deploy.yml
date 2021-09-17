@@ -61,7 +61,7 @@ jobs:
           && npm run gen:type:prod
           
       - name: Generate Types (user-profile)
-        if: github.base_ref == 'feature/user-profile-test'
+        if: github.head_ref == 'feature/user-profile-test'
         run: |
           npm run gen:clean \
           && npm run gen:type:prod
