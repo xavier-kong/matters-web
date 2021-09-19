@@ -179,7 +179,7 @@ jobs:
           wait_for_deployment: true
           
       # === `feature/user-profile` branch ===
-      - name: Deploy to EB (production)
+      - name: Deploy to EB (feature/user-profile)
         if: github.ref == 'refs/heads/feature/user-profile-test'
         uses: einaregilsson/beanstalk-deploy@v18
         with:
