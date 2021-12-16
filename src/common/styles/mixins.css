@@ -177,19 +177,37 @@
   font-weight: var(--font-weight-timestamp);
   line-height: var(--line-height-timestamp);
 
-  & .left,
-  & .right {
-    @mixin inline-flex-center-all;
-  }
-
   & .left {
+    @mixin inline-flex-center-start;
+
     color: var(--color-grey-dark);
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
 
     & :global(> * + *) {
       padding-left: var(--spacing-xx-tight);
     }
+
+    & .tags {
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      & li {
+        list-style: none;
+        display: inline;
+        background-color: var(--color-grey-lighter);
+        color: var(--color-grey-darker);
+        margin: 0 0.25rem;
+        padding: 0.25rem;
+        border-radius: 1rem;
+      }
+    }
   }
+
   & .right {
+    @mixin inline-flex-center-all;
+
     color: var(--color-black);
 
     & :global(> * + *) {

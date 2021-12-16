@@ -55,6 +55,18 @@ const FooterActions = ({ article, date, ...controls }: FooterActionsProps) => {
             <IconArchive24 />
           </>
         )}
+
+        <span className="tags">
+          {Array.isArray(article.tags) && article.tags.length > 0 ? (
+            article.tags.map(({ id, content }) => (
+              <li key={id}>
+                <a href={`/tags/${id}`}>#{content}</a>
+              </li>
+            ))
+          ) : (
+            <button>'無標籤；建議一個？'</button>
+          )}
+        </span>
       </section>
 
       <section className="right">

@@ -19,6 +19,10 @@ export const fragments = {
           id
           userName
         }
+        tags {
+          id
+          content
+        }
         ...DropdownActionsArticle
         ...ActionsReadTimeArticle
         ...ActionsDonationCountArticle

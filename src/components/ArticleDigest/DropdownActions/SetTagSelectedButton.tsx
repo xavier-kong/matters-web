@@ -33,6 +33,7 @@ const fragments = {
       id
       tags {
         id
+        content
         creator {
           id
         }
