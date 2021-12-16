@@ -91,10 +91,10 @@ export const useEditDraftAccess = (
       variables: {
         id: draftId,
         circle: (addToCircle && circle?.id) || null,
+        license,
         accessType: paywalled
           ? ArticleAccessType.paywall
           : ArticleAccessType.public,
-        license,
       },
     })
   }
