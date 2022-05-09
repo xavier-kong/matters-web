@@ -50,15 +50,15 @@ const fragments = {
 }
 
 export const toDigestTagPlaceholder = (content: string) =>
-({
-  __typename: 'Tag',
-  id: content,
-  content,
-  articles: {
-    __typename: 'ArticleConnection',
-    totalCount: 0,
-  },
-} as DigestTag)
+  ({
+    __typename: 'Tag',
+    id: content,
+    content,
+    articles: {
+      __typename: 'ArticleConnection',
+      totalCount: 0,
+    },
+  } as DigestTag)
 
 export const Tag = ({
   tag,
