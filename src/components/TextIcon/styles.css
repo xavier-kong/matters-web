@@ -4,6 +4,10 @@
   justify-content: flex-start;
   vertical-align: middle;
   user-select: none;
+
+  & + .text-icon {
+    margin: 0 0 0 4px;
+  }
 }
 
 .text {

@@ -1,6 +1,7 @@
 import { SelectNode } from '../SearchingArea'
 import Article from './Article'
 import Tag from './Tag'
+import TagBtn from './TagBtn'
 import User from './User'
 
 interface SearchSelectNodeProps {
@@ -17,7 +18,7 @@ const SearchSelectNode: React.FC<SearchSelectNodeProps> = ({
   return (
     <>
       {node.__typename === 'Article' && <Article article={node} {...props} />}
-      {node.__typename === 'Tag' && <Tag tag={node} {...props} />}
+      {node.__typename === 'Tag' && <TagBtn tag={node} {...props} />}
       {node.__typename === 'TagSearchResult' && <Tag tag={node} {...props} />}
       {node.__typename === 'User' && <User user={node} {...props} />}
     </>

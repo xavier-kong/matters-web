@@ -56,38 +56,39 @@ const StagingArea: React.FC<StagingAreaProps> = ({
 
   return (
     <section className="area">
-      {/* empty hint */}
-      {nodes.length <= 0 && hint && (
+      {nodes.length > 0 && (
+        <section className="selected">
+          {/* draggable */}
+          {draggable && (
+            <DynamicDraggableNodes
+              nodes={nodes}
+              toggleSelectNode={toggleSelectNode}
+              setNodes={setNodes}
+            />
+          )}
+
+          {/* undraggable */}
+          {!draggable && (
+            <>
+              {nodes.map(({ node, selected }) => (
+                <>
+                  <SearchSelectNode
+                    node={node}
+                    selected={selected}
+                    onClick={toggleSelectNode}
+                    inStagingArea
+                  />
+                </>
+              ))}
+            </>
+          )}
+        </section>
+      )}
+      <section className="recommend">
         <section className="hint">
           <Translate id={hint} />
         </section>
-      )}
-
-      {/* draggable */}
-      {nodes.length > 0 && draggable && (
-        <DynamicDraggableNodes
-          nodes={nodes}
-          toggleSelectNode={toggleSelectNode}
-          setNodes={setNodes}
-        />
-      )}
-
-      {/* undraggable */}
-      {nodes.length > 0 && !draggable && (
-        <ul className="nodes">
-          {nodes.map(({ node, selected }) => (
-            <li key={node.id}>
-              <SearchSelectNode
-                node={node}
-                selected={selected}
-                onClick={toggleSelectNode}
-                inStagingArea
-              />
-            </li>
-          ))}
-        </ul>
-      )}
-
+      </section>
       <style jsx>{styles}</style>
       <style jsx>{areaStyles}</style>
     </section>

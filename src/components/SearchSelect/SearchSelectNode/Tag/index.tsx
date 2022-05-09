@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 
-import { Card, IconChecked, IconUnChecked, Tag } from '~/components'
+import { Card, Tag } from '~/components'
 
 import styles from '../styles.css'
 
@@ -22,26 +22,39 @@ const SearchSelectTag: React.FC<SearchSelectTagProps> = ({
 }) => {
   const nodeClass = classNames({
     node: true,
+    inline: inStagingArea,
     selectable: inStagingArea,
   })
 
   return (
-    <Card spacing={['base', 'base']} onClick={() => onClick(tag)}>
-      <section className={nodeClass}>
-        <Tag tag={tag} type="list" hasCount disabled />
-
-        <span className="icon-select">
-          {inStagingArea && selected && (
-            <IconChecked color="green" size="md-s" />
+    <>
+      {inStagingArea ? (
+        <>
+          {selected && (
+            <section className={nodeClass} onClick={() => onClick(tag)}>
+              <Tag tag={tag} type="inline" hasClear disabled />
+            </section>
           )}
-          {inStagingArea && !selected && (
-            <IconUnChecked color="grey-light" size="md-s" />
-          )}
-        </span>
+        </>
+      ) : (
+        <Card spacing={['base', 'base']} onClick={() => onClick(tag)}>
+          <section className={nodeClass}>
+            <Tag tag={tag} type="list" hasCount disabled />
 
-        <style jsx>{styles}</style>
-      </section>
-    </Card>
+            {/* <span className="icon-select">
+              {selected && (
+                <IconChecked color="green" size="md-s" />
+              )}
+              {!selected && (
+                <IconUnChecked color="grey-light" size="md-s" />
+              )}
+            </span> */}
+
+            <style jsx>{styles}</style>
+          </section>
+        </Card>
+      )}
+    </>
   )
 }
 

@@ -23,7 +23,7 @@ const SidebarTags = ({
   return (
     <SearchSelectDialog
       title="addTag"
-      hint="hintAddTag"
+      hint="hintAddTag3"
       searchType="Tag"
       onSave={(nodes: SearchSelectNode[]) => editTags(nodes as DigestTag[])}
       nodes={tags}
@@ -44,7 +44,6 @@ const SidebarTags = ({
                   <Tag tag={tag} type="inline" disabled />
                 </li>
               ))}
-
               <style jsx>{styles}</style>
             </ul>
           )}

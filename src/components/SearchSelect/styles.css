@@ -9,6 +9,16 @@
   }
 }
 
+.selected {
+  @mixin border-bottom-grey;
+
+  padding: 8px 10px 4px 10px;
+}
+
+.recommend {
+  padding: 16px 10px;
+}
+
 .nodes {
   min-height: 100%;
 

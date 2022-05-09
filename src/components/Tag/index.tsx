@@ -2,7 +2,13 @@ import classNames from 'classnames'
 import gql from 'graphql-tag'
 import Link from 'next/link'
 
-import { IconHashTag16, IconProps, TextIcon, TextIconProps } from '~/components'
+import {
+  IconClear16,
+  IconHashTag16,
+  IconProps,
+  TextIcon,
+  TextIconProps,
+} from '~/components'
 
 import { toPath } from '~/common/utils'
 
@@ -19,6 +25,7 @@ interface TagProps {
   active?: boolean
   disabled?: boolean
   hasCount?: boolean
+  hasClear?: boolean
   onClick?: () => void
 }
 
@@ -43,15 +50,15 @@ const fragments = {
 }
 
 export const toDigestTagPlaceholder = (content: string) =>
-  ({
-    __typename: 'Tag',
-    id: content,
-    content,
-    articles: {
-      __typename: 'ArticleConnection',
-      totalCount: 0,
-    },
-  } as DigestTag)
+({
+  __typename: 'Tag',
+  id: content,
+  content,
+  articles: {
+    __typename: 'ArticleConnection',
+    totalCount: 0,
+  },
+} as DigestTag)
 
 export const Tag = ({
   tag,
@@ -61,6 +68,7 @@ export const Tag = ({
   active,
   disabled,
   hasCount = true,
+  hasClear = false,
   onClick,
 }: TagProps) => {
   const tagClasses = classNames({
@@ -137,6 +145,14 @@ export const Tag = ({
       >
         <span className="name">{tag.content}</span>
       </TextIcon>
+
+      {hasClear && (
+        <TextIcon
+          icon={<IconClear16 {...iconProps} />}
+          {...textIconProps}
+          size={textSize || textIconProps.size}
+        />
+      )}
 
       {hasCount && type === 'list' && (
         <span className="count">

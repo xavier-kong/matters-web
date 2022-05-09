@@ -7,6 +7,11 @@
   &.selectable {
     padding-right: calc(var(--icon-spacing-right) + var(--icon-size));
   }
+
+  &.inline {
+    display: inline-block;
+    margin: 8px 6px;
+  }
 }
 
 .icon-select {
