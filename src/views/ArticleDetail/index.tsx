@@ -41,7 +41,6 @@ import {
   ARTICLE_DETAIL_PUBLIC_BY_NODE_ID,
   ARTICLE_TRANSLATION,
 } from './gql'
-import License from './License'
 import MetaInfo from './MetaInfo'
 import RelatedArticles from './RelatedArticles'
 import State from './State'
@@ -405,8 +404,6 @@ const ArticleDetail = () => {
         <State article={article} />
 
         <section className="content">
-          <TagList article={article} />
-
           <section className="title">
             <Title type="article">
               {translated && titleTranslation
@@ -443,13 +440,14 @@ const ArticleDetail = () => {
             translation={translated ? contentTranslation : null}
             translating={translating}
           />
+
           {circle && !canReadFullContent && <CircleWall circle={circle} />}
 
           {features.payment && canReadFullContent && (
             <SupportWidget article={article} />
           )}
 
-          <License license={article.license} />
+          <TagList article={article} />
 
           {collectionCount > 0 && (
             <section className="block">

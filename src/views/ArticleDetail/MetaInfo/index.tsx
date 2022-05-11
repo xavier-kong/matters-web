@@ -1,5 +1,6 @@
 import { DateTime, IconPaywall16, Translate } from '~/components'
 
+import License from '../License'
 import FingerprintButton from './FingerprintButton'
 import { fragments } from './gql'
 import styles from './styles.css'
@@ -24,6 +25,8 @@ const MetaInfo = ({
 }: MetaInfoProps) => {
   return (
     <section className="info">
+      <License license={article.license} />
+
       <section className="time">
         <span>
           <Translate zh_hant="發布於" zh_hans="發布於" en="Published at" />
