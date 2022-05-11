@@ -405,8 +405,6 @@ const ArticleDetail = () => {
         <State article={article} />
 
         <section className="content">
-          <TagList article={article} />
-
           <section className="title">
             <Title type="article">
               {translated && titleTranslation
@@ -443,6 +441,7 @@ const ArticleDetail = () => {
             translation={translated ? contentTranslation : null}
             translating={translating}
           />
+
           {circle && !canReadFullContent && <CircleWall circle={circle} />}
 
           {features.payment && canReadFullContent && (
@@ -450,6 +449,8 @@ const ArticleDetail = () => {
           )}
 
           <License license={article.license} />
+
+          <TagList article={article} />
 
           {collectionCount > 0 && (
             <section className="block">
