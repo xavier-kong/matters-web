@@ -15,7 +15,7 @@ type WalletAddressProps = {
 const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production'
 
 const WalletAddress: React.FC<WalletAddressProps> = ({ address }) => {
-  const etherscanUrl = `https://etherscan.io/address/${address}`
+  // const etherscanUrl = `https://etherscan.io/address/${address}`
 
   const provider = new AlchemyProvider(
     isProd ? 'mainnet' : 'rinkeby',
@@ -39,7 +39,7 @@ const WalletAddress: React.FC<WalletAddressProps> = ({ address }) => {
   return (
     <section className="address">
       <Button
-        htmlHref={etherscanUrl}
+        // htmlHref={etherscanUrl}
         htmlTarget="_blank"
         spacing={['xxtight', 'tight']}
         bgColor="green-lighter"
