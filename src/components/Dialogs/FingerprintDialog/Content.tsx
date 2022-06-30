@@ -143,10 +143,10 @@ const FingerprintDialogContent = ({
     useMutation<RetryEditArticle>(EDIT_ARTICLE)
 
   const [timeCooling, setTimeCooling] = useState(false)
+  const POOLING_PERIOD = 30e3
   let timer: any = null
   const pooling = (startedAt: number) => {
     if (!startedAt) return
-    const POOLING_PERIOD = 30e3
     // const coolingBegins = Date.parse(articleLastModified)
     if (Date.now() - startedAt < POOLING_PERIOD) {
       setTimeCooling(true)
@@ -269,7 +269,7 @@ const FingerprintDialogContent = ({
       <Spacer size="base" />
 
       {/* iscnId */}
-      {iscnPublish && (isAuthor || iscnId) && (
+      {iscnPublish && (isAuthor || iscnId) && !timeCooling && (
         <SectionCard
           title={
             <TextIcon icon={<IconISCN24 />} size="lg">
